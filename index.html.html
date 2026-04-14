@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نوال الفريدي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#0c4a6e;--primary-light:#0e7490;--primary-dark:#082f49;--accent:#14b8a6;--accent-light:#2dd4bf;--gold:#d4a853;--gold-light:#e8c97a;--text:#1e293b;--text-light:#64748b;--bg:#f8fafc;--white:#ffffff;--card-shadow:0 4px 24px rgba(12,74,110,0.08);--card-hover:0 8px 40px rgba(12,74,110,0.15);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Cairo','Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden;}
+::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--primary-light);border-radius:4px;}
+
+/* NAV */
+nav{position:fixed;top:0;right:0;left:0;z-index:1000;background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(12,74,110,0.08);transition:all .3s ease;}
+nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08);}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.nav-logo{font-size:1.05rem;font-weight:800;color:var(--primary);}
+.nav-tabs{display:flex;gap:2px;list-style:none;}
+.nav-tabs button{background:none;border:none;cursor:pointer;font-family:inherit;color:var(--text-light);font-size:0.82rem;font-weight:600;padding:.45rem .9rem;border-radius:8px;transition:all .3s ease;}
+.nav-tabs button:hover,.nav-tabs button.active{color:var(--primary);background:rgba(12,74,110,0.06);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--primary);margin:5px 0;transition:.3s;border-radius:2px;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
+background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 45%,var(--primary-light) 100%);}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+background:radial-gradient(circle at 30% 70%,rgba(20,184,166,.12) 0%,transparent 50%),radial-gradient(circle at 70% 30%,rgba(212,168,83,.10) 0%,transparent 50%);
+animation:heroFloat 20s ease-in-out infinite;}
+@keyframes heroFloat{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(2%,-2%) rotate(1deg)}66%{transform:translate(-1%,1%) rotate(-1deg)}}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hero-container{max-width:1200px;margin:0 auto;padding:8rem 2rem 4rem;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-content{animation:fadeInUp 1s ease;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:.4rem 1.2rem;border-radius:50px;color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;margin-bottom:1.5rem;backdrop-filter:blur(10px);}
+.hero-badge::before{content:'';width:8px;height:8px;background:var(--accent-light);border-radius:50%;animation:pulseDot 2s ease-in-out infinite;}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;color:var(--white);line-height:1.25;margin-bottom:.6rem;}
+.hero h1 .gold{color:var(--gold-light);}
+.hero-job{font-size:clamp(.95rem,2vw,1.15rem);color:rgba(255,255,255,.75);font-weight:500;margin-bottom:2.5rem;padding-right:.2rem;}
+.hero-stats{display:flex;gap:2.2rem;flex-wrap:wrap;}
+.hero-stat-number{display:block;font-size:2.1rem;font-weight:900;color:var(--gold-light);line-height:1;}
+.hero-stat-label{font-size:.76rem;color:rgba(255,255,255,.65);margin-top:.3rem;font-weight:500;}
+.hero-visual{display:flex;justify-content:center;align-items:center;animation:fadeInUp 1s ease .3s both;}
+.hero-card-stack{width:100%;max-width:400px;}
+.vision-card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:2rem;backdrop-filter:blur(20px);color:var(--white);}
+.vision-card h3{font-size:1rem;font-weight:700;margin-bottom:.9rem;color:var(--gold-light);display:flex;align-items:center;gap:.5rem;}
+.vision-card p{font-size:.88rem;line-height:1.9;color:rgba(255,255,255,.85);}
+.mission-card{background:rgba(20,184,166,.10);border:1px solid rgba(20,184,166,.22);border-radius:16px;padding:1.5rem;margin-top:1rem;backdrop-filter:blur(10px);}
+.mission-card h4{font-size:.88rem;color:var(--accent-light);margin-bottom:.5rem;font-weight:700;}
+.mission-card p{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.8;}
+
+/* TABS CONTAINER */
+.tabs-section{padding:4rem 0 6rem;}
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+
+/* tab nav (inline, scrollable on mobile) */
+.tab-nav{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:3rem;border-bottom:2px solid rgba(12,74,110,.08);scroll-snap-type:x mandatory;scrollbar-width:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;scroll-snap-align:start;display:flex;align-items:center;gap:.5rem;background:none;border:none;cursor:pointer;font-family:inherit;font-size:.83rem;font-weight:700;color:var(--text-light);padding:.6rem 1.1rem;border-radius:10px;transition:all .3s ease;position:relative;}
+.tab-btn::after{content:'';position:absolute;bottom:-10px;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:2px;transform:scaleX(0);transition:transform .3s ease;}
+.tab-btn.active{color:var(--primary);background:rgba(12,74,110,.06);}
+.tab-btn.active::after{transform:scaleX(1);}
+.tab-num{width:24px;height:24px;border-radius:6px;background:rgba(12,74,110,.08);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:var(--primary);}
+.tab-btn.active .tab-num{background:var(--primary);color:#fff;}
+
+/* tab panes */
+.tab-pane{display:none;animation:fadeInUp .5s ease;}
+.tab-pane.active{display:block;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* achievement cards */
+.ach-card{background:var(--white);border-radius:20px;box-shadow:var(--card-shadow);margin-bottom:2rem;overflow:hidden;transition:box-shadow .3s ease;opacity:0;transform:translateY(20px);transition:all .5s ease;}
+.ach-card.visible{opacity:1;transform:translateY(0);}
+.ach-card:hover{box-shadow:var(--card-hover);}
+.ach-header{display:flex;align-items:flex-start;gap:1.1rem;padding:1.8rem 2rem 1rem;position:relative;cursor:pointer;}
+.ach-num{position:absolute;top:.8rem;left:1.5rem;font-size:4rem;font-weight:900;color:rgba(12,74,110,.04);line-height:1;pointer-events:none;}
+.ach-icon{width:50px;height:50px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.35rem;}
+.ach-header-text h3{font-size:1.1rem;font-weight:700;color:var(--primary-dark);margin-bottom:.25rem;}
+.ach-tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:50px;}
+.ach-body{padding:.2rem 2rem 1.5rem;font-size:.91rem;color:var(--text-light);line-height:1.9;}
+
+/* ── EVIDENCE TOGGLE BUTTON ── */
+.evidence-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin:0 2rem 1.5rem;
+  background:linear-gradient(135deg,rgba(12,74,110,.06),rgba(14,116,144,.04));
+  border:1.5px solid rgba(12,74,110,.18);border-radius:12px;
+  padding:.65rem 1.4rem;cursor:pointer;font-family:inherit;
+  font-size:.82rem;font-weight:700;color:var(--primary);
+  transition:all .3s ease;position:relative;overflow:hidden;
+}
+.evidence-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  opacity:0;transition:opacity .3s ease;
+}
+.evidence-btn:hover::before,.evidence-btn.open::before{opacity:1;}
+.evidence-btn:hover,.evidence-btn.open{color:#fff;border-color:var(--primary);box-shadow:0 4px 18px rgba(12,74,110,.25);}
+.evidence-btn span,.evidence-btn svg{position:relative;z-index:1;}
+.evidence-btn .chevron{transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.evidence-btn.open .chevron{transform:rotate(180deg);}
+
+/* ── EVIDENCE PANEL — smooth max-height transition ── */
+.evidence-panel{
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .55s cubic-bezier(.4,0,.2,1),opacity .38s ease,padding .38s ease;
+  padding:0 2rem 0;
+  border-top:1px solid transparent;
+}
+.evidence-panel.open{
+  max-height:6000px;opacity:1;padding:1.5rem 2rem 2rem;
+  border-top-color:rgba(12,74,110,.07);
+}
+
+/* ── EVIDENCE TYPE BAR ── */
+.ev-type-bar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+.ev-type-chip{
+  display:inline-flex;align-items:center;gap:.35rem;
+  border-radius:50px;padding:.28rem .8rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.01em;
+}
+.chip-img{background:rgba(20,184,166,.09);border:1px solid rgba(20,184,166,.2);color:var(--accent);}
+.chip-pdf{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.18);color:#ef4444;}
+.chip-vid{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.18);color:#f59e0b;}
+.chip-doc{background:rgba(12,74,110,.07);border:1px solid rgba(12,74,110,.15);color:var(--primary);}
+
+/* ── EVIDENCE SECTIONS ── */
+.ev-section{margin-top:1rem;}
+.ev-section-title{
+  display:flex;align-items:center;gap:.45rem;
+  font-size:.73rem;font-weight:800;
+  color:var(--text-light);letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:.8rem;padding-bottom:.5rem;
+  border-bottom:1.5px dashed rgba(12,74,110,.1);
+}
+
+/* ── GALLERY GRID ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.85rem;margin-top:.5rem;}
+
+/* ── GALLERY THUMB ── */
+.gallery-thumb{
+  position:relative;border-radius:14px;overflow:hidden;
+  aspect-ratio:4/3;cursor:pointer;
+  border:2px solid transparent;
+  transition:all .35s ease;
+  box-shadow:0 3px 14px rgba(0,0,0,.08);
+}
+.gallery-thumb:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 10px 28px rgba(0,0,0,.16);}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease;}
+.gallery-thumb:hover img{transform:scale(1.1);}
+.gallery-thumb .gt-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(12,74,110,.0) 50%,rgba(12,74,110,.55) 100%);
+  opacity:0;transition:opacity .35s ease;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.5rem;
+}
+.gallery-thumb:hover .gt-overlay{opacity:1;}
+.gallery-thumb .gt-zoom{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:8px;
+  background:rgba(255,255,255,.2);backdrop-filter:blur(6px);
+  color:#fff;font-size:.9rem;
+}
+
+/* ── DOC LINKS ── */
+.doc-links{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.5rem;}
+.doc-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--white);
+  border:1.5px solid rgba(12,74,110,.13);border-radius:10px;
+  padding:.55rem 1.1rem;font-size:.8rem;font-weight:600;
+  color:var(--primary);text-decoration:none;
+  transition:all .3s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+.doc-link:hover{
+  background:var(--primary);color:#fff;border-color:var(--primary);
+  transform:translateY(-2px);box-shadow:0 5px 18px rgba(12,74,110,.22);
+}
+
+/* ── VIDEO WRAPPER ── */
+.video-wrapper{
+  position:relative;border-radius:14px;overflow:hidden;
+  aspect-ratio:16/9;background:#000;
+  box-shadow:0 6px 24px rgba(0,0,0,.18);margin-top:.5rem;
+}
+.video-wrapper video,.video-wrapper iframe{width:100%;height:100%;border:none;}
+
+/* ── PDF WRAPPER ── */
+.pdf-wrapper{
+  position:relative;border-radius:14px;overflow:hidden;
+  height:420px;
+  border:1.5px solid rgba(12,74,110,.12);
+  box-shadow:0 4px 20px rgba(0,0,0,.07);margin-top:.5rem;
+}
+.pdf-wrapper iframe{width:100%;height:100%;border:none;}
+
+/* ── VIDEO GRID ── */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1rem;margin-top:.5rem;
+}
+.video-card{
+  background:var(--white);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 3px 16px rgba(0,0,0,.09);
+  border:1.5px solid rgba(12,74,110,.07);
+  transition:box-shadow .3s ease;
+}
+.video-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.14);}
+.video-card video{
+  width:100%;aspect-ratio:16/9;
+  display:block;background:#000;
+  border-radius:14px 14px 0 0;
+}
+.video-label{
+  padding:.55rem .9rem;
+  font-size:.78rem;font-weight:700;
+  color:var(--primary);background:rgba(12,74,110,.03);
+  border-top:1px solid rgba(12,74,110,.07);
+  text-align:center;
+}
+.ev-section-videos{margin-top:1.2rem;}
+.ev-section-docs{margin-top:1.2rem;}
+.pdf-link{
+  background:rgba(239,68,68,.04);
+  border-color:rgba(239,68,68,.15);
+  color:#dc2626;
+}
+.pdf-link:hover{background:#dc2626;border-color:#dc2626;color:#fff;}
+@media(max-width:640px){
+  .video-grid{grid-template-columns:1fr;}
+}
+
+/* tag & icon colours */
+.tag-digital{background:rgba(20,184,166,.08);color:var(--accent);}
+.tag-excellence{background:rgba(212,168,83,.08);color:var(--gold);}
+.tag-education{background:rgba(14,116,144,.08);color:var(--primary-light);}
+.tag-initiative{background:rgba(16,185,129,.08);color:#10b981;}
+.tag-environment{background:rgba(139,92,246,.08);color:#8b5cf6;}
+.tag-dedication{background:rgba(244,63,94,.08);color:#f43f5e;}
+.tag-finance{background:rgba(59,130,246,.08);color:#3b82f6;}
+.tag-registration{background:rgba(99,102,241,.08);color:#6366f1;}
+.tag-innovation{background:rgba(245,158,11,.08);color:#f59e0b;}
+.tag-prodev{background:rgba(168,85,247,.08);color:#a855f7;}
+.icon-digital{background:rgba(20,184,166,.12);color:var(--accent);}
+.icon-excellence{background:rgba(212,168,83,.12);color:var(--gold);}
+.icon-education{background:rgba(14,116,144,.12);color:var(--primary-light);}
+.icon-initiative{background:rgba(16,185,129,.12);color:#10b981;}
+.icon-environment{background:rgba(139,92,246,.12);color:#8b5cf6;}
+.icon-dedication{background:rgba(244,63,94,.12);color:#f43f5e;}
+.icon-finance{background:rgba(59,130,246,.12);color:#3b82f6;}
+.icon-registration{background:rgba(99,102,241,.12);color:#6366f1;}
+.icon-innovation{background:rgba(245,158,11,.12);color:#f59e0b;}
+.icon-prodev{background:rgba(168,85,247,.12);color:#a855f7;}
+
+/* STATS BAND */
+.stats-band{background:linear-gradient(135deg,var(--primary-dark),var(--primary),var(--primary-light));padding:3.5rem 0;position:relative;overflow:hidden;}
+.stats-band::before{content:'';position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23fff'/%3E%3C/svg%3E");}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;z-index:1;}
+.stat-item{text-align:center;color:var(--white);}
+.stat-number{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--gold-light);line-height:1.1;margin-bottom:.3rem;}
+.stat-label{font-size:.88rem;color:rgba(255,255,255,.75);font-weight:500;}
+
+/* QUOTE */
+.quote-section{background:var(--white);padding:4.5rem 0;}
+.quote-box{max-width:780px;margin:0 auto;text-align:center;padding:2.5rem;}
+.quote-mark{font-size:5rem;color:var(--gold);opacity:.28;line-height:1;font-family:serif;}
+.quote-box blockquote{font-size:clamp(1rem,2.5vw,1.35rem);font-weight:600;color:var(--primary-dark);line-height:2;margin:1rem 0;}
+.quote-author{font-size:.9rem;color:var(--text-light);font-weight:500;}
+
+/* FOOTER */
+footer{background:var(--primary-dark);color:var(--white);padding:3rem 0 1.5rem;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-info h3{font-size:1.15rem;font-weight:800;margin-bottom:.3rem;}
+.footer-info p{font-size:.84rem;color:rgba(255,255,255,.55);}
+.footer-org{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1rem 1.5rem;}
+.footer-org-icon{width:44px;height:44px;background:rgba(20,184,166,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.footer-org-text h4{font-size:.88rem;font-weight:700;}
+.footer-org-text p{font-size:.76rem;color:rgba(255,255,255,.45);}
+
+/* SOCIAL */
+.social-bar{display:flex;gap:.7rem;margin-top:1.2rem;}
+.social-btn{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.65);text-decoration:none;transition:all .3s ease;font-size:1.05rem;}
+.social-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateY(-2px);}
+
+.footer-bottom{text-align:center;margin-top:1.5rem;font-size:.76rem;color:rgba(255,255,255,.35);}
+
+/* LIGHTBOX */
+.lightbox{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(5,15,30,.93);backdrop-filter:blur(18px);
+  align-items:center;justify-content:center;
+}
+.lightbox.active{display:flex;}
+.lightbox img{
+  max-width:88vw;max-height:84vh;
+  border-radius:16px;object-fit:contain;
+  box-shadow:0 20px 80px rgba(0,0,0,.6);
+  animation:lbFadeIn .35s cubic-bezier(.4,0,.2,1);
+}
+@keyframes lbFadeIn{from{opacity:0;transform:scale(.93) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.lb-close{
+  position:absolute;top:1.2rem;left:1.2rem;
+  width:46px;height:46px;border-radius:14px;border:none;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;font-size:1.5rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s ease;
+}
+.lb-close:hover{background:rgba(239,68,68,.5);transform:scale(1.08);}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:52px;height:52px;border-radius:14px;border:none;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;font-size:1.4rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s ease;
+}
+.lb-nav:hover{background:rgba(255,255,255,.22);transform:translateY(-50%) scale(1.06);}
+.lb-prev{right:1.2rem;} .lb-next{left:1.2rem;}
+.lb-counter{
+  position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);border-radius:50px;
+  padding:.3rem .9rem;
+  color:rgba(255,255,255,.8);font-size:.82rem;font-weight:700;
+}
+
+/* MOBILE MENU */
+.mobile-menu-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.4);}
+.mobile-menu-overlay.open{display:block;}
+.mobile-menu-panel{position:fixed;top:0;right:0;bottom:0;width:280px;z-index:1001;background:var(--white);padding:2rem 1.5rem;overflow-y:auto;transform:translateX(100%);transition:transform .4s ease;}
+.mobile-menu-panel.open{transform:translateX(0);}
+.mobile-menu-panel button.tab-btn{width:100%;text-align:right;border-radius:10px;padding:.7rem 1rem;margin-bottom:.3rem;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){
+  .nav-tabs{display:none;}
+  .nav-toggle{display:block;}
+  .hero-container{grid-template-columns:1fr;text-align:center;padding-top:6rem;}
+  .hero-stats{justify-content:center;}
+  .hero-visual{order:-1;}
+  .hero-card-stack{max-width:340px;}
+  .footer-top{flex-direction:column;}
+  .social-bar{justify-content:center;}
+  .ach-header{padding:1.4rem 1.4rem .8rem;}
+  .ach-body{padding:.2rem 1.4rem 1.2rem;}
+  .evidence-btn{margin:0 1.4rem 1.2rem;}
+  .evidence-panel.open{padding:1.2rem 1.4rem 1.5rem;}
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));}
+}
+@media(max-width:480px){.hero-stats{flex-direction:column;gap:1rem;}.stats-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">نوال الفريدي</div>
+    <ul class="nav-tabs" id="navTabs">
+      <li><button class="tab-btn active" onclick="switchTab(0,this)"><span class="tab-num">01</span>السجل التاريخي</button></li>
+      <li><button class="tab-btn" onclick="switchTab(1,this)"><span class="tab-num">02</span>التحكم التشغيلي</button></li>
+      <li><button class="tab-btn" onclick="switchTab(2,this)"><span class="tab-num">03</span>المبادرات والشراكات</button></li>
+      <li><button class="tab-btn" onclick="switchTab(3,this)"><span class="tab-num">04</span>أرشيف الريادة</button></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu-panel" id="mobilePanel">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+    <span style="font-weight:800;color:var(--primary)">القائمة</span>
+    <button onclick="closeMobileMenu()" style="background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--text-light);">×</button>
+  </div>
+  <button class="tab-btn active" onclick="switchTab(0,this);closeMobileMenu()"><span class="tab-num">01</span>السجل التاريخي</button>
+  <button class="tab-btn" onclick="switchTab(1,this);closeMobileMenu()"><span class="tab-num">02</span>التحكم التشغيلي</button>
+  <button class="tab-btn" onclick="switchTab(2,this);closeMobileMenu()"><span class="tab-num">03</span>المبادرات والشراكات</button>
+  <button class="tab-btn" onclick="switchTab(3,this);closeMobileMenu()"><span class="tab-num">04</span>أرشيف الريادة</button>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">مدارس الملك عبدالعزيز النموذجية</div>
+      <h1>نوال <span class="gold">الفريدي</span></h1>
+      <p class="hero-job">وكيلة الشؤون التعليمية والمدرسية — المرحلة الابتدائية<br>
+        <span style="font-size:.88em;opacity:.8;">إدارة التعليم بالمدينة المنورة</span></p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-number">18</span><span class="hero-stat-label">عاماً من العطاء</span></div>
+        <div class="hero-stat"><span class="hero-stat-number">%100</span><span class="hero-stat-label">أداء إداري كامل</span></div>
+        <div class="hero-stat"><span class="hero-stat-number">1600+</span><span class="hero-stat-label">طالبة خلال الأعوام السابقة</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="vision-card">
+          <h3>◈ الرؤية</h3>
+          <p>الريادة في قيادة التحول التعليمي الرقمي، وبناء بيئة مدرسية مُحكَمة مؤسسياً تُمكّن الأجيال وتصنع التميز المستدام</p>
+        </div>
+        <div class="mission-card">
+          <h4>◇ الرسالة</h4>
+          <p>التزام مهني بتقديم نموذج قيادي يجمع بين أصالة الخبرة ودقة الأنظمة عبر استثمار التقنية في حوكمة العمليات المدرسية وتجويد نواتج التعلم</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">18+</div><div class="stat-label">عاماً من الخبرة</div></div>
+      <div class="stat-item"><div class="stat-number">%100</div><div class="stat-label">أداء إداري كامل</div></div>
+      <div class="stat-item"><div class="stat-number">%98</div><div class="stat-label">بيئة خالية من الأعطال</div></div>
+      <div class="stat-item"><div class="stat-number">%25</div><div class="stat-label">تحسّن في الفهم القرائي</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS SECTION -->
+<section class="tabs-section">
+  <div class="container">
+
+    <!-- Tab Nav -->
+    <div class="tab-nav" id="tabNav">
+      <button class="tab-btn active" onclick="switchTab(0,this)"><span class="tab-num">01</span>السجل التاريخي</button>
+      <button class="tab-btn" onclick="switchTab(1,this)"><span class="tab-num">02</span>التحكم التشغيلي وحوكمة الأداء</button>
+      <button class="tab-btn" onclick="switchTab(2,this)"><span class="tab-num">03</span>المبادرات والشراكات الاستراتيجية</button>
+      <button class="tab-btn" onclick="switchTab(3,this)"><span class="tab-num">04</span>أرشيف الريادة وإدارة التحولات</button>
+    </div>
+
+    <!-- ======= PANE 0: السجل التاريخي ======= -->
+    <div class="tab-pane active" id="pane-0">
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">01</div>
+          <div class="ach-icon icon-dedication">❤</div>
+          <div class="ach-header-text">
+            <h3>«الإخلاص.. أسلوب حياة» — سجل الانضباط التاريخي</h3>
+            <span class="ach-tag tag-dedication">18 عاماً — التزام مهني</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          على مدار 18 عاماً من العطاء الدؤوب، حافظتُ على سجل رسمي ناصع ومنضبط، مدفوعةً بإيمان عميق بالأمانة. وحتى في أصعب اللحظات الصحية كان الانتماء للميدان هو المحرّك للعودة بنفس الكفاءة. أثبتُ أن العمل للمدرسة هو عمل <strong>بالأثر والنتائج لا بمجرد الحضور</strong>.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="dedic">
+            <div class="gallery-thumb" onclick="openLightbox('dedic',0)"><img src="img/dedic-1.png" alt="سجل الانضباط" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('dedic',1)"><img src="img/dedic-2.png" alt="سجل الانضباط" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('dedic',2)"><img src="img/dedic-3.png" alt="سجل الانضباط" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('dedic',3)"><img src="img/dedic-4.png" alt="سجل الانضباط" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('dedic',4)"><img src="img/dedic-5.png" alt="سجل الانضباط" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/dedic-vid-1.mov" type="video/quicktime">
+              </video>
+              <div class="video-label">سجل الإخلاص والانضباط الوظيفي</div>
+            </div>
+            </div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/dedic-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 الأداء الوظيفي</a>
+            <a href="media/pdfs/dedic-pdf-2.pdf" class="doc-link pdf-link" target="_blank">📄 قواعد السلوك الوظيفي وأخلاقيات الوظيفة</a>
+            <a href="media/pdfs/dedic-pdf-4.pdf" class="doc-link pdf-link" target="_blank">📄 ميثاق أخلاقيات مهنة التعليم</a>
+            <a href="media/pdfs/dedic-pdf-5.pdf" class="doc-link pdf-link" target="_blank">📄 مدونة قواعد السلوك الوظيفي</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">02</div>
+          <div class="ach-icon icon-digital">⚡</div>
+          <div class="ach-header-text">
+            <h3>مرحلة التأسيس والريادة — من نظام نور إلى التميز المؤسسي</h3>
+            <span class="ach-tag tag-digital">تحول رقمي — 2008م</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          قيادة التحول الرقمي الكامل للمدرسة منذ 2008م، وبناء قاعدة بيانات شاملة لجميع الطالبات والموظفات. يظل النظام حتى اليوم متكاملاً خالياً تماماً من النواقص، مما أسّس لبنية تحتية رقمية <strong>مستدامة</strong> لاتخاذ قرارات دقيقة وسريعة.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="digital">
+            <div class="gallery-thumb" onclick="openLightbox('digital',0)"><img src="img/noor-1.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',1)"><img src="img/noor-2.png" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',2)"><img src="img/noor-3.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',3)"><img src="img/noor-4.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',4)"><img src="img/noor-5.png" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',5)"><img src="img/noor-6.png" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',6)"><img src="img/noor-7.webp" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',7)"><img src="img/noor-8.png" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',8)"><img src="img/noor-9.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',9)"><img src="img/madaris-1.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',10)"><img src="img/madaris-2.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',11)"><img src="img/madaris-3.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('digital',12)"><img src="img/madaris-4.jpg" alt="نظام نور ومنصة مدارس" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/digital-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 نشرة نظام نور</a>
+            <a href="media/pdfs/digital-pdf-2.pdf" class="doc-link pdf-link" target="_blank">📄 التأكد من رصد درجات الطالبات ومطابقتها</a>
+            <a href="media/pdfs/digital-pdf-3.pdf" class="doc-link pdf-link" target="_blank">📄 متابعة تحضير المعلمات في منصة مدرستي</a>
+            <a href="media/pdfs/digital-pdf-4.pdf" class="doc-link pdf-link" target="_blank">📄 نتائج موقع إدارة تقويم الأداء</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">03</div>
+          <div class="ach-icon icon-excellence">♛</div>
+          <div class="ach-header-text">
+            <h3>الاستدامة والتميز المؤسسي — الدرجة الكاملة 100%</h3>
+            <span class="ach-tag tag-excellence">تميز مؤسسي</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          الحفاظ على ثبات الأداء الجيد رغم تغيّر الإدارة المدرسية لأكثر من مرة. تنظيم الملفات الإدارية وفق أعلى معايير الجودة، وتمكين الفريق من أدوات القياس. النتيجة: <strong>الدرجة الكاملة 100%</strong> في الأداء الإداري من فريق التقويم التعليمي وإشادة الفرق الإشرافية.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="sustain">
+            <div class="gallery-thumb" onclick="openLightbox('sustain',0)"><img src="img/sustain-1.jpg" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',1)"><img src="img/sustain-2.jpg" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',2)"><img src="img/sustain-3.jpg" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',3)"><img src="img/sustain-4.jpg" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',4)"><img src="img/sustain-5.jpg" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',5)"><img src="img/sustain-6.png" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',6)"><img src="img/sustain-7.png" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',7)"><img src="img/sustain-8.png" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('sustain',8)"><img src="img/sustain-9.png" alt="الاستدامة والتميز" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/sustain-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 تقرير الأداء الوظيفي</a>
+            <a href="media/pdfs/sustain-pdf-3.pdf" class="doc-link pdf-link" target="_blank">📄 تنفيذ التقرير</a>
+            <a href="media/pdfs/sustain-pdf-4.pdf" class="doc-link pdf-link" target="_blank">📄 ملف أدلة الاختبارات ١٤٤٧</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pane-0 -->
+
+    <!-- ======= PANE 1: التحكم التشغيلي وحوكمة الأداء ======= -->
+    <div class="tab-pane" id="pane-1">
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">01</div>
+          <div class="ach-icon" style="background:rgba(14,116,144,.12);color:var(--primary-light);">⚙</div>
+          <div class="ach-header-text">
+            <h3>هندسة العمليات والتحكم التشغيلي — استقرار اليوم المدرسي</h3>
+            <span class="ach-tag tag-education">تحكم تشغيلي</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          بناء منظومة ضبط لإيقاع اليوم الدراسي منذ الدقيقة الأولى: انتشار مكاني يغطي النقاط الحيوية، ضبط توقيت الحصص بتقليص الهدر الزمني <strong>95%</strong>، وتفعيل «القيادة المصغرة» عبر رائدات الفصول. النتيجة: <strong>صفر حوادث</strong> واستقرار تشغيلي 100% منذ الأسبوع الأول.
+          <br><br>
+          <em style="color:var(--gold);font-size:.88rem;">شاهد إثبات: مشرفات التوعية الفكرية تساءلن «هل المبنى خالٍ؟» — فكان الجواب: الجميع حاضر لكنها ثمار منظومة انضباطية دقيقة.</em>
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="ops">
+            <div class="gallery-thumb" onclick="openLightbox('ops',0)"><img src="img/ops-1.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',1)"><img src="img/ops-2.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',2)"><img src="img/ops-3.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',3)"><img src="img/ops-4.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',4)"><img src="img/ops-5.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',5)"><img src="img/ops-6.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',6)"><img src="img/ops-7.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',7)"><img src="img/ops-8.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',8)"><img src="img/ops-9.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',9)"><img src="img/ops-10.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',10)"><img src="img/ops-11.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',11)"><img src="img/ops-12.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',12)"><img src="img/ops-13.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',13)"><img src="img/ops-14.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',14)"><img src="img/ops-15.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',15)"><img src="img/ops-16.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('ops',16)"><img src="img/ops-17.png" alt="التحكم التشغيلي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/ops-vid-1.mov" type="video/quicktime">
+              </video>
+              <div class="video-label">هندسة اليوم المدرسي — مشهد ميداني ١</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/ops-vid-2.mov" type="video/quicktime">
+              </video>
+              <div class="video-label">هندسة اليوم المدرسي — مشهد ميداني ٢</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/ops-vid-3.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">انتشار وتحكم تشغيلي</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">02</div>
+          <div class="ach-icon icon-finance">📈</div>
+          <div class="ach-header-text">
+            <h3>الحوكمة المالية — نظام الصندوق المدرسي الذكي (Excel)</h3>
+            <span class="ach-tag tag-finance">حوكمة مالية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          ابتكار قاعدة بيانات Excel مبرمجة بمعادلات ذكية تحصر المصروفات تلقائياً وتستخرج التقارير المالية الشهرية والسنوية بضغطة زر. نموذج يُتطلّع لمشاركته مع سائر الإدارات المدرسية لتبسيط حوكمة الميزانية.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="finance">
+            <div class="gallery-thumb" onclick="openLightbox('finance',0)"><img src="img/finance-1.jpg" alt="الحوكمة المالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('finance',1)"><img src="img/finance-2.jpg" alt="الحوكمة المالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('finance',2)"><img src="img/finance-3.jpg" alt="الحوكمة المالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/finance-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">نظام الصندوق المدرسي الذكي</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">03</div>
+          <div class="ach-icon icon-innovation">⚡</div>
+          <div class="ach-header-text">
+            <h3>استدامة التميز التشغيلي في فترات الذروة — بيئة العمل المحفزة</h3>
+            <span class="ach-tag tag-innovation">تحفيز وأداء</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          قيادة حزمة إجراءات تشغيلية خلال فترات الاختبارات: تجهيز المقار بلمسات تحفيزية، توزيع المهام بعدالة عبر ملفات تفاعلية، وتفعيل مبادرات معنوية مستمرة. النتيجة: رفع الكفاءة الميدانية <strong>100%</strong> مع إشادة واسعة من المنسوبات.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="support">
+            <div class="gallery-thumb" onclick="openLightbox('support',0)"><img src="img/support-1.jpg" alt="بيئة العمل المحفزة" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('support',1)"><img src="img/support-2.jpg" alt="بيئة العمل المحفزة" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('support',2)"><img src="img/support-3.jpg" alt="بيئة العمل المحفزة" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/support-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الدعم النوعي — مشهد ١</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/support-vid-2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الدعم النوعي — مشهد ٢</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/support-vid-3.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الدعم النوعي — مشهد ٣</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/support-vid-4.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الدعم النوعي — مشهد ٤</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/support-vid-5.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الدعم النوعي — مشهد ٥</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/support-vid-6.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الدعم النوعي — مشهد ٦</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">04</div>
+          <div class="ach-icon" style="background:rgba(20,184,166,.12);color:var(--accent);">🏫</div>
+          <div class="ach-header-text">
+            <h3>كفاءة المرافق المدرسية — خطة التفقد الدوري والاستدامة المؤسسية</h3>
+            <span class="ach-tag tag-digital">سلامة المبنى</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          الإشراف المباشر على خطة التفقد الدوري الشامل لمرافق المبنى المدرسي، والاستجابة الفورية لأي خلل تقني أو إنشائي. النتيجة: <strong>بيئة مدرسية خالية من الأعطال بنسبة 98%</strong>.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="facility">
+            <div class="gallery-thumb" onclick="openLightbox('facility',0)"><img src="img/facility-1.jpg" alt="كفاءة المرافق" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('facility',1)"><img src="img/facility-2.jpg" alt="كفاءة المرافق" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('facility',2)"><img src="img/facility-3.jpg" alt="كفاءة المرافق" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('facility',3)"><img src="img/facility-4.png" alt="كفاءة المرافق" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('facility',4)"><img src="img/facility-5.png" alt="كفاءة المرافق" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/facility-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الاستدامة المؤسسية — كفاءة المرافق</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pane-1 -->
+
+    <!-- ======= PANE 2: المبادرات والشراكات الاستراتيجية ======= -->
+    <div class="tab-pane" id="pane-2">
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">01</div>
+          <div class="ach-icon icon-prodev">🎓</div>
+          <div class="ach-header-text">
+            <h3>التمكين المهني والشراكة الأكاديمية مع جامعة طيبة</h3>
+            <span class="ach-tag tag-prodev">شراكة أكاديمية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          إجراء تحليل للاحتياجات التدريبية، وربط المحاضرات بنتائج نواتج التعلم الفعلية، وتنظيم اللقاء ببروتوكول قيادي مع جامعة طيبة. النتيجة: نسبة نجاح <strong>100%</strong> في التطوير المهني وتوطين ممارسات تربوية حديثة.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="prodev">
+            <div class="gallery-thumb" onclick="openLightbox('prodev',0)"><img src="img/prodev-1.jpg" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',1)"><img src="img/prodev-2.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',2)"><img src="img/prodev-3.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',3)"><img src="img/prodev-4.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',4)"><img src="img/prodev-5.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',5)"><img src="img/prodev-6.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',6)"><img src="img/prodev-7.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',7)"><img src="img/course-1.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('prodev',8)"><img src="img/course-2.png" alt="التطوير المهني" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/prodev-vid-1.mov" type="video/quicktime">
+              </video>
+              <div class="video-label">الشراكة الأكاديمية مع جامعة طيبة</div>
+            </div>
+            </div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/prodev-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 وثيقة الشراكة — مدارس الملك عبدالعزيز النموذجية</a>
+            <a href="media/pdfs/prodev-pdf-2.pdf" class="doc-link pdf-link" target="_blank">📄 تقرير التطوير المهني</a>
+            <a href="media/pdfs/prodev-pdf-3.pdf" class="doc-link pdf-link" target="_blank">📄 وزارة التعليم — الشراكة الأكاديمية</a>
+            <a href="media/pdfs/course-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 شهادة إتمام الدورة ١</a>
+            <a href="media/pdfs/course-pdf-2.pdf" class="doc-link pdf-link" target="_blank">📄 شهادة إتمام الدورة ٢</a>
+            <a href="media/pdfs/course-pdf-3.pdf" class="doc-link pdf-link" target="_blank">📄 شهادة نوال الفريدي</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">02</div>
+          <div class="ach-icon icon-education">💡</div>
+          <div class="ach-header-text">
+            <h3>مشروع «فكرها صح» لتجويد نواتج التعلم وتنمية التفكير</h3>
+            <span class="ach-tag tag-education">مبادرة تعليمية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          مبادرة لبناء عقلية تحليلية لدى الطالبات عبر دمج مهارات الفهم القرائي والحساب الذهني والبحث الاستقصائي. اعتمدت أسلوب التغذية الراجعة البنّاءة بدلاً من الرقابة. النتيجة: تحسّن <strong>25%</strong> في مستويات الفهم القرائي.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="fikr">
+            <div class="gallery-thumb" onclick="openLightbox('fikr',0)"><img src="img/fikr-1.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',1)"><img src="img/fikr-2.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',2)"><img src="img/fikr-3.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',3)"><img src="img/fikr-4.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',4)"><img src="img/fikr-5.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',5)"><img src="img/assess-1.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',6)"><img src="img/assess-2.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('fikr',7)"><img src="img/assess-3.png" alt="فكرها صح" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/fikr-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">نشاط فكرها صح — مشهد ١</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/fikr-vid-2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">نشاط فكرها صح — مشهد ٢</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/fikr-vid-3.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">نشاط البحث والفهم القرائي للغة العربية</div>
+            </div>
+            </div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/fikr-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 نتائج التقييم الموحد</a>
+            <a href="media/pdfs/fikr-pdf-2.pdf" class="doc-link pdf-link" target="_blank">📄 خطة مشروع فكرها صح</a>
+            <a href="media/pdfs/fikr-pdf-3.pdf" class="doc-link pdf-link" target="_blank">📄 ورشة عمل فكرها صح</a>
+            <a href="media/pdfs/fikr-pdf-4.pdf" class="doc-link pdf-link" target="_blank">📄 تقرير التطوير المهني</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">03</div>
+          <div class="ach-icon icon-initiative">🌏</div>
+          <div class="ach-header-text">
+            <h3>نافذتك إلى اللغة الصينية — الريادة في رؤية 2030</h3>
+            <span class="ach-tag tag-initiative">مبادرة وطنية استباقية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          استقطاب معلمة صينية متخصصة بدبلوم مونتيسوري وتصميم أدوات تعليمية بأسلوب «التعلم باللعب». نسبة تقبّل <strong>100%</strong> من الطالبات وأولياء الأمور — تحويل المدرسة إلى <strong>بيت خبرة</strong> في تعليم اللغة الصينية.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="doc-links">
+            <a href="#" class="doc-link">📄 خطة البرنامج</a>
+            <a href="#" class="doc-link">📷 صور الفصل الدراسي</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">04</div>
+          <div class="ach-icon" style="background:rgba(236,72,153,.12);color:#ec4899;">🚦</div>
+          <div class="ach-header-text">
+            <h3>شراكة مع مرور المدينة — «روحك غالية» النسخة الثانية</h3>
+            <span class="ach-tag" style="background:rgba(236,72,153,.08);color:#ec4899;">مسؤولية مجتمعية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          تفعيل تكاملي يشمل كافة مراحل المجمع (رياض الأطفال، الابتدائي، المتوسط) بالتنسيق مع إدارة مرور المدينة المنورة. النتيجة: <strong>100%</strong> تفاعل من جميع المراحل للسنة الثانية على التوالي.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="maroor">
+            <div class="gallery-thumb" onclick="openLightbox('maroor',0)"><img src="img/maroor-1.jpg" alt="روحك غالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('maroor',1)"><img src="img/maroor-2.jpg" alt="روحك غالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('maroor',2)"><img src="img/maroor-3.jpg" alt="روحك غالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('maroor',3)"><img src="img/maroor-4.jpg" alt="روحك غالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('maroor',4)"><img src="img/maroor-5.jpg" alt="روحك غالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('maroor',5)"><img src="img/safety-1.png" alt="روحك غالية" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/maroor-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">شراكة مع مرور المدينة — فعالية روحك غالية</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/maroor-vid-2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">روحك غالية — مشهد ٢</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/safety-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الأمن والسلامة — توثيق ١</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/safety-vid-2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الأمن والسلامة — توثيق ٢</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/safety-vid-3.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الأمن والسلامة — توثيق ٣</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/safety-vid-4.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">الأمن والسلامة — توثيق ٤</div>
+            </div>
+            </div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/safety-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 وثيقة الأمن والسلامة ١</a>
+            <a href="media/pdfs/safety-pdf-2.pdf" class="doc-link pdf-link" target="_blank">📄 وثيقة الأمن والسلامة ٢</a>
+            <a href="media/pdfs/safety-pdf-3.pdf" class="doc-link pdf-link" target="_blank">📄 وثيقة الأمن والسلامة ٣</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">05</div>
+          <div class="ach-icon icon-environment">🌱</div>
+          <div class="ach-header-text">
+            <h3>«شجرتي بصمة حياتي» — المواطنة البيئية</h3>
+            <span class="ach-tag tag-environment">استدامة بيئية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          مبادرة رائدة سبقت المبادرات الرسمية: تشجير فناء مدينة الملك سلمان الطبية بأيدي الطالبات مع نظام «الرعاية والتوثيق». نالت استحسان المجتمع المدرسي والمدينة الطبية، وسبقت تدشين مبادرات بيئية رسمية لاحقة.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="tree">
+            <div class="gallery-thumb" onclick="openLightbox('tree',0)"><img src="img/tree-1.jpg" alt="شجرتي بصمة حياتي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('tree',1)"><img src="img/tree-2.jpg" alt="شجرتي بصمة حياتي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('tree',2)"><img src="img/tree-3.jpg" alt="شجرتي بصمة حياتي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('tree',3)"><img src="img/tree-4.jpeg" alt="شجرتي بصمة حياتي" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/tree-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">شجرتي بصمة حياتي — توثيق ١</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/tree-vid-2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">شجرتي بصمة حياتي — توثيق ٢</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">06</div>
+          <div class="ach-icon icon-innovation">🎮</div>
+          <div class="ach-header-text">
+            <h3>رؤية الأجيال — التنافس الرقمي الهادف</h3>
+            <span class="ach-tag tag-innovation">ابتكار استباقي</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          تنظيم مسابقة إلكترونية كبرى تجمع طلاب التعليم العام والدولي، بخطوة استباقية سبقت التعميم الرسمي من إدارة التعليم. تجهيز مقر منافسات بأجهزة بلايستيشن مع قوانين ترتكز على الألعاب الهادفة والتنافس الشريف.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/rival-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">رؤية الأجيال — مسابقة التنافس الرقمي الهادف</div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pane-2 -->
+
+    <!-- ======= PANE 3: أرشيف الريادة وإدارة التحولات ======= -->
+    <div class="tab-pane" id="pane-3">
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">01</div>
+          <div class="ach-icon icon-registration">📋</div>
+          <div class="ach-header-text">
+            <h3>تيسير رحلة العبور — دعم التسجيل السنوي</h3>
+            <span class="ach-tag tag-registration">خدمة مجتمعية</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          إدارة التسجيل حتى خلال الإجازة الصيفية، مع تخصيص قنوات تواصل ودعم فني مستمر لأولياء الأمور. النتيجة: تسجيل <strong>~1600 طالبة</strong> خلال الأعوام السابقة بنسبة أخطاء تكاد تكون معدومة، مما جعل التسجيل تجربة سلسة ومطمئنة.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="reg">
+            <div class="gallery-thumb" onclick="openLightbox('reg',0)"><img src="img/reg-1.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',1)"><img src="img/reg-2.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',2)"><img src="img/reg-3.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',3)"><img src="img/reg-4.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',4)"><img src="img/reg-5.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',5)"><img src="img/reg-6.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',6)"><img src="img/reg-7.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',7)"><img src="img/reg-8.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',8)"><img src="img/reg-9.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',9)"><img src="img/reg-10.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',10)"><img src="img/reg-11.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',11)"><img src="img/reg-12.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',12)"><img src="img/reg-13.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',13)"><img src="img/reg-14.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',14)"><img src="img/reg-15.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('reg',15)"><img src="img/reg-16.png" alt="دعم التسجيل" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/reg-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 تقرير التسجيل السنوي — إحصاءات الطالبات</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card" style="border:2px solid rgba(212,168,83,.25);">
+        <div class="ach-header">
+          <div class="ach-num">02</div>
+          <div class="ach-icon" style="background:rgba(212,168,83,.15);color:var(--gold);">⏱</div>
+          <div class="ach-header-text">
+            <h3>إدارة التغيير المتسارع — التحول الرقمي الشامل في 48 ساعة</h3>
+            <span class="ach-tag tag-excellence">إنجاز استثنائي — كوفيد 19</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          عند قرار تعليق الدراسة الحضورية جراء جائحة كورونا، توليتُ انتقال <strong>100%</strong> من الكادر التعليمي والطالبات إلى المنصات الافتراضية خلال <strong>48 ساعة فقط</strong> دون أي فاقد تعليمي أو تقني — وكانت المرحلة الابتدائية الأولى في الوصول لحل متكامل.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="impact">
+            <div class="gallery-thumb" onclick="openLightbox('impact',0)"><img src="img/impact-1.png" alt="التحول الرقمي ٤٨ ساعة" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('impact',1)"><img src="img/impact-2.png" alt="التحول الرقمي ٤٨ ساعة" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+            <div class="gallery-thumb" onclick="openLightbox('impact',2)"><img src="img/impact-3.png" alt="التحول الرقمي ٤٨ ساعة" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+          <div class="ev-section ev-section-videos">
+            <div class="ev-section-title">🎬 مقاطع الفيديو</div>
+            <div class="video-grid">
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/impact-vid-1.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">توثيق إدارة التحول الرقمي خلال كوفيد-١٩</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/impact-vid-2.mp4" type="video/mp4">
+              </video>
+              <div class="video-label">شكرًا — شهادات تقدير</div>
+            </div>
+            <div class="video-card">
+              <video controls preload="none" playsinline>
+                <source src="media/videos/impact-vid-3.mov" type="video/quicktime">
+              </video>
+              <div class="video-label">شهادة شكر وتقدير</div>
+            </div>
+            </div>
+          </div>
+          <div class="ev-section ev-section-docs">
+            <div class="ev-section-title">📄 المستندات والوثائق</div>
+            <div class="doc-links">
+            <a href="media/pdfs/impact-pdf-1.pdf" class="doc-link pdf-link" target="_blank">📄 تقرير التحول الرقمي — المرحلة الابتدائية</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-header">
+          <div class="ach-num">03</div>
+          <div class="ach-icon" style="background:rgba(236,72,153,.12);color:#ec4899;">✦</div>
+          <div class="ach-header-text">
+            <h3>الاستدامة والتميز — «حين تصبح القيادة نظاماً لا يغيب»</h3>
+            <span class="ach-tag" style="background:rgba(236,72,153,.08);color:#ec4899;">أثر مهني مستدام</span>
+          </div>
+        </div>
+        <div class="ach-body">
+          المبادرات والأنظمة الرقمية التي غرستُها في المدرسة جعلت انسيابية العمل واستقرار الأداء سمةً ثابتة لا تهزّها العوارض. سجل الأثر المهني يشمل شهادات التقدير والإشادات الرسمية والتقارير الموثّقة عبر 18 عاماً.
+        </div>
+        <button class="evidence-btn" onclick="toggleEvidence(this)">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6M12 9v6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="ev-label">عرض الشواهد والمستندات</span>
+          <svg class="chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="evidence-panel">
+          <div class="gallery-grid" data-gallery="impact2">
+            <div class="gallery-thumb" onclick="openLightbox('impact2',0)"><img src="img/impact-4.png" alt="سجل الأثر" loading="lazy"><div class="gt-overlay"><div class="gt-zoom">🔍</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pane-3 -->
+
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-box">
+      <div class="quote-mark">❝</div>
+      <blockquote>القيادةُ أثرٌ يبقى.. وجدارةٌ تُستحق — سأبقى دائماً تلك الموظفة التي لا تكتفي بالوصول بل تصنعُ المسار وتتركُ الأثر الذي لا يُمحى</blockquote>
+      <p class="quote-author">— نوال الفريدي</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-info">
+        <h3>نوال الفريدي</h3>
+        <p>وكيلة الشؤون التعليمية والمدرسية — المرحلة الابتدائية</p>
+        <p>إدارة التعليم بالمدينة المنورة — وزارة التعليم</p>
+        <div class="social-bar">
+          <!-- Twitter/X -->
+          <a href="#" class="social-btn" title="تويتر / X" aria-label="تويتر">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-btn" title="إنستغرام" aria-label="إنستغرام">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <!-- Phone -->
+          <a href="tel:0549883320" class="social-btn" title="0549883320" aria-label="الهاتف">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </a>
+          <!-- Email -->
+          <a href="mailto:nawalalfraid@gmail.com" class="social-btn" title="البريد الإلكتروني" aria-label="البريد الإلكتروني">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-org">
+        <div class="footer-org-icon">🏫</div>
+        <div class="footer-org-text">
+          <h4>مدارس الملك عبدالعزيز النموذجية</h4>
+          <p>إدارة التعليم بالمدينة المنورة — وزارة التعليم</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 نوال الفريدي — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">×</button>
+  <button class="lb-nav lb-prev" onclick="navLightbox(1)">›</button>
+  <button class="lb-nav lb-next" onclick="navLightbox(-1)">‹</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<script>
+// ── TAB SWITCHING ──
+const panes = document.querySelectorAll('.tab-pane');
+const allTabBtns = document.querySelectorAll('.tab-btn');
+
+function switchTab(idx, clickedBtn) {
+  panes.forEach((p,i) => p.classList.toggle('active', i === idx));
+  allTabBtns.forEach(b => {
+    const bIdx = parseInt(b.getAttribute('onclick').match(/\d+/)[0]);
+    b.classList.toggle('active', bIdx === idx);
+  });
+  // reveal cards
+  setTimeout(() => {
+    panes[idx].querySelectorAll('.ach-card').forEach((c,i) => {
+      c.style.transitionDelay = (i * 0.08) + 's';
+      c.classList.add('visible');
+    });
+  }, 50);
+  window.scrollTo({top: document.querySelector('.tabs-section').offsetTop - 80, behavior:'smooth'});
+}
+
+// initial reveal
+document.querySelectorAll('#pane-0 .ach-card').forEach((c,i) => {
+  c.style.transitionDelay = (i * 0.1) + 's';
+  setTimeout(() => c.classList.add('visible'), 100);
+});
+
+// ── EVIDENCE TOGGLE ──
+function toggleEvidence(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  // Update label text
+  const lbl = btn.querySelector('.ev-label');
+  if (lbl) lbl.textContent = isOpen ? 'إخفاء الشواهد' : 'عرض الشواهد والمستندات';
+}
+
+// ── LIGHTBOX ──
+const galleries = {};
+document.querySelectorAll('.gallery-grid').forEach(grid => {
+  const name = grid.dataset.gallery;
+  galleries[name] = Array.from(grid.querySelectorAll('img')).map(img => img.src);
+});
+
+// ── AUTO-INJECT EVIDENCE TYPE BAR ──
+(function injectTypeBars() {
+  document.querySelectorAll('.evidence-panel').forEach(panel => {
+    const imgCount = panel.querySelectorAll('.gallery-thumb').length;
+    const vidCount = panel.querySelectorAll('.video-card').length;
+    const pdfCount = panel.querySelectorAll('.pdf-link').length;
+    const docCount = panel.querySelectorAll('.doc-link:not(.pdf-link)').length;
+    const total = imgCount + vidCount + pdfCount + docCount;
+    if (total === 0) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'ev-type-bar';
+    if (imgCount > 0) bar.innerHTML += `<span class="ev-type-chip chip-img">🖼 صور (${imgCount})</span>`;
+    if (vidCount > 0) bar.innerHTML += `<span class="ev-type-chip chip-vid">🎬 فيديو (${vidCount})</span>`;
+    if (pdfCount > 0) bar.innerHTML += `<span class="ev-type-chip chip-pdf">📄 PDF (${pdfCount})</span>`;
+    if (docCount > 0) bar.innerHTML += `<span class="ev-type-chip chip-doc">📎 مستندات (${docCount})</span>`;
+    panel.insertBefore(bar, panel.firstChild);
+  });
+})();
+let curGallery = '', curIdx = 0;
+function openLightbox(g, i) {
+  curGallery = g; curIdx = i;
+  document.getElementById('lightbox').classList.add('active');
+  updateLB();
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+// Close lightbox on backdrop click
+document.getElementById('lightbox').addEventListener('click', function(e){
+  if (e.target === this) closeLightbox();
+});
+function navLightbox(d) {
+  const imgs = galleries[curGallery];
+  if (!imgs) return;
+  curIdx = (curIdx + d + imgs.length) % imgs.length;
+  updateLB();
+}
+function updateLB() {
+  const imgs = galleries[curGallery];
+  if (!imgs) return;
+  document.getElementById('lbImg').src = imgs[curIdx];
+  document.getElementById('lbCounter').textContent = `${curIdx+1} / ${imgs.length}`;
+}
+document.getElementById('lightbox').addEventListener('click', e => { if(e.target===e.currentTarget) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key==='Escape') closeLightbox();
+  if (e.key==='ArrowRight') navLightbox(-1);
+  if (e.key==='ArrowLeft') navLightbox(1);
+});
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 50);
+});
+
+// ── MOBILE MENU ──
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('mobileOverlay').classList.add('open');
+  document.getElementById('mobilePanel').classList.add('open');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileOverlay').classList.remove('open');
+  document.getElementById('mobilePanel').classList.remove('open');
+}
+
+// ── SCROLL REVEAL (intersection) ──
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); cardObserver.unobserve(e.target); }});
+}, {threshold:.1});
+document.querySelectorAll('.ach-card').forEach(c => cardObserver.observe(c));
+
+// ── COUNTER ANIMATION ──
+function animateCounters() {
+  document.querySelectorAll('.stat-number').forEach(el => {
+    const txt = el.textContent;
+    const num = parseInt(txt.replace(/[^0-9]/g,''));
+    const suffix = txt.replace(/[0-9]/g,'');
+    const start = performance.now();
+    const dur = 1800;
+    function tick(now) {
+      const p = Math.min((now-start)/dur,1);
+      const e2 = 1 - Math.pow(1-p,3);
+      el.textContent = Math.floor(num*e2) + suffix;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { animateCounters(); statsObs.unobserve(e.target); }});
+},{threshold:.5});
+const statsBand = document.querySelector('.stats-band');
+if(statsBand) statsObs.observe(statsBand);
+</script>
+</body>
+</html>
